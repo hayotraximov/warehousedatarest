@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.Category;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.CategoryService;
-import uz.raximov.demo.layout.CategoryDTO;
+import uz.raximov.demo.payload.CategoryDTO;
 
 @RestController
 @RequestMapping("/categpry")

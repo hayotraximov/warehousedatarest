@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import uz.raximov.demo.Entity.*;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Repository.InputProductRepository;
-import uz.raximov.demo.layout.InputProductDto;
+import uz.raximov.demo.payload.InputProductDto;
 
 import java.util.Optional;
 

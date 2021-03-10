@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.Currency;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.CurrencyService;
-import uz.raximov.demo.layout.CategoryDTO;
 
 @RestController
 @RequestMapping("/currency")

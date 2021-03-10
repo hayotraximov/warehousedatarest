@@ -10,7 +10,7 @@ import uz.raximov.demo.Entity.OutputProduct;
 import uz.raximov.demo.Entity.Product;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Repository.OutputProductRepository;
-import uz.raximov.demo.layout.OutputProductDto;
+import uz.raximov.demo.payload.OutputProductDto;
 
 import java.util.Optional;
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.User;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.UserService;
-import uz.raximov.demo.layout.UserDTO;
+import uz.raximov.demo.payload.UserDTO;
 
 @RestController
 @RequestMapping("/user")

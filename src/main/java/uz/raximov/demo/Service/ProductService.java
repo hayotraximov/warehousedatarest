@@ -5,17 +5,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import uz.raximov.demo.Entity.Attachment;
 import uz.raximov.demo.Entity.Category;
 import uz.raximov.demo.Entity.Measurement;
 import uz.raximov.demo.Entity.Product;
-import uz.raximov.demo.Messages.Custom;
 import uz.raximov.demo.Messages.Delete;
-import uz.raximov.demo.Repository.AttachmentRepository;
-import uz.raximov.demo.Repository.CategoryRepository;
 import uz.raximov.demo.Repository.ProductRepository;
-import uz.raximov.demo.layout.ProductDTO;
+import uz.raximov.demo.payload.ProductDTO;
 
 import java.io.IOException;
 import java.util.Optional;

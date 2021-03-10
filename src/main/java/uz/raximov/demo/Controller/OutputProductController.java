@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.OutputProduct;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.OutputProductService;
-import uz.raximov.demo.layout.OutputProductDto;
+import uz.raximov.demo.payload.OutputProductDto;
 
 @RestController
 @RequestMapping("/outputproduct")

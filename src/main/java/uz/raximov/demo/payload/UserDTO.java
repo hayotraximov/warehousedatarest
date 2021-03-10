@@ -1,4 +1,4 @@
-package uz.raximov.demo.layout;
+package uz.raximov.demo.payload;
 
 import lombok.Data;
 

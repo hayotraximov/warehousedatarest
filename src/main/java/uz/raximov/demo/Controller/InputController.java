@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.Input;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.InputService;
-import uz.raximov.demo.layout.InputDTO;
+import uz.raximov.demo.payload.InputDTO;
 
 @RestController
 @RequestMapping("/input")

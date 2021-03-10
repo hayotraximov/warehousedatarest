@@ -9,7 +9,7 @@ import uz.raximov.demo.Entity.User;
 import uz.raximov.demo.Entity.Warehouse;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Repository.UserRepository;
-import uz.raximov.demo.layout.UserDTO;
+import uz.raximov.demo.payload.UserDTO;
 
 import java.util.HashSet;
 import java.util.Optional;

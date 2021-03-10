@@ -11,7 +11,7 @@ import uz.raximov.demo.Entity.Supplier;
 import uz.raximov.demo.Entity.Warehouse;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Repository.InputRepository;
-import uz.raximov.demo.layout.InputDTO;
+import uz.raximov.demo.payload.InputDTO;
 
 import java.util.Optional;
 import java.util.UUID;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import uz.raximov.demo.Entity.Category;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Repository.CategoryRepository;
-import uz.raximov.demo.layout.CategoryDTO;
+import uz.raximov.demo.payload.CategoryDTO;
 
 import java.util.Optional;
 

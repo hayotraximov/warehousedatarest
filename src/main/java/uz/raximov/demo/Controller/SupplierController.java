@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.Supplier;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.SupplierService;
-import uz.raximov.demo.layout.CategoryDTO;
 
 @RestController
 @RequestMapping("/supplier")

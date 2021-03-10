@@ -3,11 +3,10 @@ package uz.raximov.demo.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import uz.raximov.demo.Entity.Product;
 import uz.raximov.demo.Messages.Delete;
 import uz.raximov.demo.Service.ProductService;
-import uz.raximov.demo.layout.ProductDTO;
+import uz.raximov.demo.payload.ProductDTO;
 
 import java.io.IOException;
 

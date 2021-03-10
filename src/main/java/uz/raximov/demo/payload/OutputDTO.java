@@ -1,13 +1,13 @@
-package uz.raximov.demo.layout;
+package uz.raximov.demo.payload;
 
 import lombok.Data;
 
 import java.sql.Date;
 
 @Data
-public class InputDTO {
+public class OutputDTO {
     private Integer warehouseId;
-    private Integer supplierId;
+    private Integer clientId;
     private Integer currencyId;
     private Integer facturNumber;
     private Date date;

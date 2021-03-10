@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.raximov.demo.Entity.InputProduct;
 import uz.raximov.demo.Service.InputProductService;
 import uz.raximov.demo.Messages.Delete;
-import uz.raximov.demo.Service.InputProductService;
-import uz.raximov.demo.layout.InputDTO;
-import uz.raximov.demo.layout.InputProductDto;
+import uz.raximov.demo.payload.InputProductDto;
 
 @RestController
 @RequestMapping("/inputproduct")
