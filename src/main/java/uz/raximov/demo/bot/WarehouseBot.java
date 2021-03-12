@@ -92,9 +92,12 @@ public class WarehouseBot extends TelegramLongPollingBot {
                                     break;
                             }
                             break;
+                        case BotState.WAREHOUSE_EDIT:
+                            execute(telegramService.warehouseSettings(update));
+                            break;
                         case BotState.WAREHOUSE_MENU:
 
-                            if (edit && check) {
+                            if (edit && check && !text.equals(Constant.BACK)) {
                                 execute(telegramService.warehouseAdd(update));
                                 check = false;
                             }
@@ -107,9 +110,16 @@ public class WarehouseBot extends TelegramLongPollingBot {
                                     edit = true;
                                     check = true;
                                     break;
+                                case Constant.BACK://katalog menyuga qaytish
+                                           user.setState(BotState.KATALOG_MENU);
+                                           userRepository.save(user);
+                                           execute(telegramService.katalogMenu(update));
+                                    break;
                                 default:
                                     if (!edit || check) {
-                                        execute(telegramService.warehouseAdd1(update));
+                                        if (!text.equals(Constant.BACK)){// orqaga qaytishni tekshirdim
+                                            execute(telegramService.warehouseAdd1(update));
+                                        }
                                         execute(telegramService.warehouseSettings(update));
                                         check = true;
                                     }

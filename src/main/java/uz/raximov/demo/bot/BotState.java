@@ -9,5 +9,6 @@ public interface BotState {
     String KATALOG_MENU = "katalog menu";
 
     String WAREHOUSE_MENU = "warehouse";
+    String WAREHOUSE_EDIT = "warehouseedit";
 
 }

@@ -319,6 +319,7 @@ public class TelegramServiceImpl implements TelegramService {
         KeyboardRow backRow = new KeyboardRow();
         KeyboardButton backButton = new KeyboardButton();
         backButton.setText(Constant.BACK);
+        backRow.add(backButton);
         keyboardRows.add(backRow);
         for (Warehouse warehouse : all) {
             KeyboardRow keyboardRow = new KeyboardRow(); //qator
