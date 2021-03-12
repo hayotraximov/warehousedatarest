@@ -63,4 +63,9 @@ public class WareHouseService {
         }
         return new Warehouse();
     }
+
+    public Warehouse active(Integer id, boolean status){
+        Optional<Warehouse> optionalWarehouse = wareHouseRepository.findById(id);
+        return optionalWarehouse.orElseGet(Warehouse::new);
+    }
 }

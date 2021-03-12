@@ -17,10 +17,10 @@ import java.util.Optional;
 @Component
 public class WarehouseBot extends TelegramLongPollingBot {
 
-    @Value("1291574651:AAFJ_P18j7SWLp4EuZHfDU2l1RGtaP9Op8w")
+    @Value("1496299501:AAE7cv3QrTGZp65DduWETIf_fNdrrt1PQSw")
     String token;
 
-    @Value("jafarTestBot")
+    @Value("beployuz_bot")
     String botName;
 
     boolean edit = false;
