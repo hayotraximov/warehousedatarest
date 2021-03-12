@@ -33,7 +33,6 @@ public class TelegramServiceImpl implements TelegramService {
     @Autowired
     WareHouseService wareHouseService;
 
-
     @Override
     public SendMessage login(Update update) {
 
@@ -79,18 +78,26 @@ public class TelegramServiceImpl implements TelegramService {
                 .setChatId(update.getMessage().getChatId()) //kimga yuboradi
                 .setParseMode(ParseMode.MARKDOWN); //qanaqa format
 
-        UserDTO userDTO = new UserDTO();
-        userDTO.setFirstName(update.getMessage().getContact().getFirstName());
-        userDTO.setLastName(update.getMessage().getContact().getLastName());
-        userDTO.setPhoneNumber(update.getMessage().getContact().getPhoneNumber());
-        userDTO.setChatId(update.getMessage().getChatId());
-        userDTO.setPassword("123");
-        User user = userService.add(userDTO);
+        Optional<User> optionalUser = userRepository.findByChatId(update.getMessage().getChatId());
+        User user;
+        if (!optionalUser.isPresent()) {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setFirstName(update.getMessage().getContact().getFirstName());
+            userDTO.setLastName(update.getMessage().getContact().getLastName());
+            userDTO.setPhoneNumber(update.getMessage().getContact().getPhoneNumber());
+            userDTO.setChatId(update.getMessage().getChatId());
+            userDTO.setPassword("123");
+            user = userService.add(userDTO);
+
+            sendMessage.setText(user.getFirstName() + " " + user.getLastName() + "! " + Constant.WELCOME_TEXT);
+
+        }else{
+            user = optionalUser.get();
+            sendMessage.setText(Constant.BACK);
+        }
+
         user.setState(BotState.SHARECONTACT);
         userRepository.save(user);
-
-        sendMessage.setText(user.getFirstName() + " " + user.getLastName() + "! " + Constant.WELCOME_TEXT);
-
 
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup()
                 .setOneTimeKeyboard(true)
