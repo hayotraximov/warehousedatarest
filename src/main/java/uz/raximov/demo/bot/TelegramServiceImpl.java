@@ -33,6 +33,8 @@ public class TelegramServiceImpl implements TelegramService {
     @Autowired
     WareHouseService wareHouseService;
 
+    Warehouse warehouse;
+
     @Override
     public SendMessage login(Update update) {
 
@@ -91,7 +93,7 @@ public class TelegramServiceImpl implements TelegramService {
 
             sendMessage.setText(user.getFirstName() + " " + user.getLastName() + "! " + Constant.WELCOME_TEXT);
 
-        }else{
+        } else {
             user = optionalUser.get();
             sendMessage.setText(Constant.BACK);
         }
@@ -245,10 +247,15 @@ public class TelegramServiceImpl implements TelegramService {
                 .setChatId(update.getMessage().getChatId()) //kimga yuboradi
                 .setParseMode(ParseMode.MARKDOWN); //qanaqa format
 
-        Optional<User> optionalUser = userRepository.findByChatId(update.getMessage().getChatId());
+        String text = update.getMessage().getText();
 
+        Optional<User> optionalUser = userRepository.findByChatId(update.getMessage().getChatId());
         User user = optionalUser.get();
 
+        if (text.contains("=>")) {
+            String[] split = text.split("=>");
+            warehouse = wareHouseService.getById(Integer.parseInt(split[0]));
+        }
         ReplyKeyboardRemove replyKeyboardMarkup = new ReplyKeyboardRemove();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         sendMessage.setText(Constant.W_NAME);
@@ -267,15 +274,77 @@ public class TelegramServiceImpl implements TelegramService {
 
         User user = optionalUser.get();
 
-        Warehouse warehouse = new Warehouse();
-        warehouse.setName(update.getMessage().getText());
-        wareHouseService.add(warehouse);
+        if (warehouse != null) {
+            Warehouse edit = wareHouseService.edit(warehouse.getId(), warehouse);
+
+            sendMessage.setText("Edit bo'ldi!");
+            warehouse = null;
+
+        } else {
+            warehouse = new Warehouse();
+            warehouse.setName(update.getMessage().getText());
+            wareHouseService.add(warehouse);
+            sendMessage.setText("Xullas qo'shildi!");
+            warehouse = null;
+        }
+
 
         ReplyKeyboardRemove replyKeyboardMarkup = new ReplyKeyboardRemove();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        sendMessage.setText("Xullas qo'shldi!");
 
         return sendMessage;
+    }
+
+    @Override
+    public SendMessage warehouseEdit(Update update) {
+
+        SendMessage sendMessage = new SendMessage()
+                .setChatId(update.getMessage().getChatId()) //kimga yuboradi
+                .setParseMode(ParseMode.MARKDOWN); //qanaqa format
+
+        Optional<User> optionalUser = userRepository.findByChatId(update.getMessage().getChatId());
+
+        User user = optionalUser.get();
+        user.setState(BotState.WAREHOUSE_MENU);
+        userRepository.save(user);
+
+        List<Warehouse> all = wareHouseService.getAll();
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup()
+                .setOneTimeKeyboard(true)
+                .setResizeKeyboard(true)
+                .setSelective(true);
+        List<KeyboardRow> keyboardRows = new ArrayList<>();
+
+        KeyboardRow backRow = new KeyboardRow();
+        KeyboardButton backButton = new KeyboardButton();
+        backButton.setText(Constant.BACK);
+        keyboardRows.add(backRow);
+        for (Warehouse warehouse : all) {
+            KeyboardRow keyboardRow = new KeyboardRow(); //qator
+            KeyboardButton keyboardButton = new KeyboardButton(); //bitta button
+
+            keyboardButton.setText(warehouse.getId() + "=> " + warehouse.getName());
+
+            keyboardRow.add(keyboardButton);
+            keyboardRows.add(keyboardRow);
+        }
+
+        replyKeyboardMarkup.setKeyboard(keyboardRows);
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        sendMessage.setText(Constant.W_SELECT);
+
+        return sendMessage;
+
+    }
+
+    @Override
+    public SendMessage warehouseDelete(Update update) {
+        return null;
+    }
+
+    @Override
+    public SendMessage warehouseActive(Update update) {
+        return null;
     }
 
 

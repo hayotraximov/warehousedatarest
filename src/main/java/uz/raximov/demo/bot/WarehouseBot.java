@@ -23,6 +23,8 @@ public class WarehouseBot extends TelegramLongPollingBot {
     @Value("jafarTestBot")
     String botName;
 
+    boolean edit = false;
+
     @Autowired
     TelegramService telegramService;
 
@@ -90,14 +92,26 @@ public class WarehouseBot extends TelegramLongPollingBot {
                             }
                             break;
                         case BotState.WAREHOUSE_MENU:
+                            if (edit) {
+                                execute(telegramService.warehouseAdd(update));
+                                edit = false;
+                            }
                             switch (text) {
                                 case Constant.ADD:
                                     execute(telegramService.warehouseAdd(update));
                                     break;
+                                case Constant.EDIT:
+                                    execute(telegramService.warehouseEdit(update));
+                                    edit = true;
+                                    break;
                                 default:
-                                    execute(telegramService.warehouseAdd1(update));
+                                    if (!edit) {
+                                        execute(telegramService.warehouseAdd1(update));
+                                        execute(telegramService.warehouseSettings(update));
+                                    }
                                     break;
                             }
+
                     }
                 }
             } else if (message.hasContact()) {

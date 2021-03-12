@@ -34,5 +34,7 @@ public interface Constant {
     String EDIT = "o'zgartirish";
     String DELETE = "o'chirish";
 
-    String W_NAME = "Ombor nomini kiriting";
+    String W_NAME = "Ombor nomini kiriting : ";
+    String W_SELECT = "Omborni tanlang : ";
+
 }

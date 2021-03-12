@@ -18,5 +18,10 @@ public interface TelegramService {
 
     SendMessage warehouseAdd1(Update update);
 
+    SendMessage warehouseEdit(Update update);
+
+    SendMessage warehouseDelete(Update update);
+
+    SendMessage warehouseActive(Update update);
 
 }

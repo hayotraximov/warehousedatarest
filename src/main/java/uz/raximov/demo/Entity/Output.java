@@ -18,7 +18,7 @@ public class Output {
 
     private Date date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Warehouse warehouse;
 
     @OneToOne

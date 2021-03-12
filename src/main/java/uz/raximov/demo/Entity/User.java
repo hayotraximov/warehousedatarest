@@ -34,6 +34,6 @@ public class User {
 
     private String state; //bosqich
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private Set<Warehouse> warehouseSet;
 }
