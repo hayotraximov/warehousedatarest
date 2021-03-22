@@ -12,6 +12,4 @@ import javax.persistence.Entity;
 @Data
 @Entity
 public class Warehouse extends AbsEntity {
-
-
 }
