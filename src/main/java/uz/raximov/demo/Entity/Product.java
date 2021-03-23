@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import uz.raximov.demo.Entity.template.AbsEntity;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class Product extends AbsEntity {
     private Attachment attachment;
 
     @Column(nullable = false)
-    private String code;
+    private String code = UUID.randomUUID().toString();
 
     @ManyToOne
     private Measurement measurement;

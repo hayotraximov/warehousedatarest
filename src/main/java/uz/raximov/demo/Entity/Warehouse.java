@@ -6,10 +6,11 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uz.raximov.demo.Entity.template.AbsEntity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 public class Warehouse extends AbsEntity {
+
 }
