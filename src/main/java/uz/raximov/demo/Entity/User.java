@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,16 +24,12 @@ public class User {
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
-    private String code;
+    private String code = UUID.randomUUID().toString();
 
     @Column(nullable = false)
     private String password;
 
     private boolean active;
-
-    private Long chatId;
-
-    private String state; //bosqich
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private Set<Warehouse> warehouseSet;

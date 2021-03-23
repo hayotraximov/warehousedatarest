@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +27,7 @@ public class Output {
 
     private Integer factureNumber;
 
-    private String code;
+    private String code = UUID.randomUUID().toString();
 
     @ManyToOne
     private Client client;
